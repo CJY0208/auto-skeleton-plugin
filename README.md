@@ -40,7 +40,7 @@ module.exports = {
         const spinner = document.getElementById('spinner')
         spinner.parentNode.removeChild(spinner)
 
-        return SkeletonPlugin.generateSkeleton(window, route)
+        return AutoSkeletonPlugin.generateSkeleton(window, route)
       },
     })
   ]
