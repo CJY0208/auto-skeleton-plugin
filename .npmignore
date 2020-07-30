@@ -1,0 +1,6 @@
+.github
+node_modules
+.gitignore
+.npmignore
+.prettierrc
+yarn.lock
