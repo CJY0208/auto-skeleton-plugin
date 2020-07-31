@@ -1,3 +1,5 @@
+// From: https://github.com/uncss/uncss/blob/0.17.3/src/lib.js
+
 const postcss = require('postcss'),
   postcssSelectorParser = require('postcss-selector-parser'),
   _ = require('lodash')
