@@ -1,6 +1,6 @@
 {
   "name": "auto-skeleton-plugin",
-  "version": "0.0.0-beta.3",
+  "version": "0.0.0-beta.4",
   "description": "基于 jsdom 的、自动生成骨架的 Webpack 插件",
   "main": "./src/index.js",
   "keywords": [
