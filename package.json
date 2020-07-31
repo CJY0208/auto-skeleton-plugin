@@ -1,6 +1,6 @@
 {
   "name": "auto-skeleton-plugin",
-  "version": "0.0.0-beta.2",
+  "version": "0.0.0-beta.3",
   "description": "基于 jsdom 的、自动生成骨架的 Webpack 插件",
   "main": "./src/index.js",
   "keywords": [
@@ -20,6 +20,7 @@
     "@prerenderer/prerenderer": "^0.7.2",
     "html-minifier": "^4.0.0",
     "jsdom": "^15.2.1",
-    "promise-limit": "^2.7.0"
+    "promise-limit": "^2.7.0",
+    "szfe-tools": "^0.0.0-beta.7"
   }
 }
