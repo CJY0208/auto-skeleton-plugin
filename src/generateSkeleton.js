@@ -1,3 +1,5 @@
+const { flatten } = require('szfe-tools')
+
 function generateSkeleton(window, route) {
   const { document, Text } = window
   const style = document.createElement('style')
@@ -18,15 +20,14 @@ function generateSkeleton(window, route) {
   document.head.appendChild(style)
 
   // 文字节点
-  ;[...document.querySelectorAll('*')]
+  flatten([...document.querySelectorAll('*')]
     .filter(
       (node) =>
         !['script', 'style', 'html', 'body', 'head', 'title'].includes(
           node.tagName.toLowerCase()
         )
     )
-    .map((node) => [...node.childNodes].filter((node) => node instanceof Text))
-    .flat(Infinity)
+    .map((node) => [...node.childNodes].filter((node) => node instanceof Text)))
     .forEach((node) => {
       let span = document.createElement('span')
       node.parentNode.insertBefore(span, node)
