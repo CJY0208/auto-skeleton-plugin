@@ -1,6 +1,20 @@
 # AutoSkeletonPlugin
 
-基于 jsdom 的、自动生成骨架的 Webpack 插件，工作方式参考 Prerender-SPA-Plugin
+基于 [jsdom](https://github.com/jsdom/jsdom) 的、自动生成骨架的 Webpack 插件，工作方式参考 [prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin)
+
+## 工作方式
+
+1. 等待 webpack 完成打包
+
+2. 启动一个本地静态服务器，按配置的 routes，用 jsdom 启动无头浏览器访问打包结果
+
+3. jsdom 中页面完成渲染后，执行 [generateSkeleton](https://github.com/CJY0208/auto-skeleton-plugin/blob/master/src/generateSkeleton.js) 骨架生成方法，将内容转换为骨架
+
+4. 截取当前页面的 innerHTML 作为骨架预渲染结果，输出成 html 文件
+
+5. 根据配置的 staticDir 将 html 文件存进去，over
+
+---
 
 ## 基本使用方式
 
@@ -19,6 +33,8 @@ module.exports = {
   ]
 }
 ```
+
+---
 
 ## 自定义骨架生成过程
 
