@@ -6,7 +6,7 @@ function generateSkeleton(window, route) {
   style.innerHTML = `
     ._ske {
       background: #f2f2f2;
-      color: transparent;
+      color: transparent !important;
       text-decoration: none;
       user-select: none;
       pointer-events: none;
