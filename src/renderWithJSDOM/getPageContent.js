@@ -1,3 +1,5 @@
+const uncss = require('./uncss')
+
 const DEFAULT_CONFIG = {
   deferHeadScripts: true,
   asyncHeadScripts: false,
@@ -21,7 +23,7 @@ const getPageContent = (dom, config = DEFAULT_CONFIG, resources) =>
       let interval
       let timeout
 
-      function captureDocument() {
+      async function captureDocument() {
         // console.log('节点数：', document.body.querySelectorAll('*').length)
         if (options.deferHeadScripts) {
           // defer scripts
@@ -58,6 +60,13 @@ const getPageContent = (dom, config = DEFAULT_CONFIG, resources) =>
         }
 
         options.generateSkeleton(window, options.route)
+
+        // 过滤无效 css
+        await Promise.all(
+          [...document.head.querySelectorAll('style')].map(async (style) => {
+            style.innerHTML = await uncss(dom, style.innerHTML)
+          })
+        )
 
         // get page content string
         try {

@@ -7,8 +7,8 @@ function generateSkeleton(window, route) {
     ._ske {
       background: #f2f2f2;
       color: transparent !important;
-      text-decoration: none;
-      user-select: none;
+      text-decoration: none !important;
+      user-select: none !important;
       pointer-events: none;
     }
     ._ske_img {
@@ -20,29 +20,32 @@ function generateSkeleton(window, route) {
   document.head.appendChild(style)
 
   // 文字节点
-  flatten([...document.querySelectorAll('*')]
-    .filter(
-      (node) =>
-        !['script', 'style', 'html', 'body', 'head', 'title'].includes(
-          node.tagName.toLowerCase()
-        )
-    )
-    .map((node) => [...node.childNodes].filter((node) => node instanceof Text)))
-    .forEach((node) => {
-      let span = document.createElement('span')
-      node.parentNode.insertBefore(span, node)
-      span.appendChild(node)
-      span.classList.add('_ske')
-    })
+  flatten(
+    [...document.querySelectorAll('*')]
+      .filter(
+        (node) =>
+          !['script', 'style', 'html', 'body', 'head', 'title'].includes(
+            node.tagName.toLowerCase()
+          )
+      )
+      .map((node) =>
+        [...node.childNodes].filter((node) => node instanceof Text)
+      )
+  ).forEach((node) => {
+    let span = document.createElement('span')
+    node.parentNode.insertBefore(span, node)
+    span.appendChild(node)
+    span.classList.add('_ske')
+  })
   // 图标节点
-  ;[...document.querySelectorAll('*')]
-    .filter((node) => ['i'].includes(node.tagName.toLowerCase()))
+  ;[...document.querySelectorAll('i')]
+    // .filter((node) => ['i'].includes(node.tagName.toLowerCase()))
     .forEach((node) => {
       node.classList.add('_ske')
     })
   // 图片节点
-  ;[...document.querySelectorAll('*')]
-    .filter((node) => ['img'].includes(node.tagName.toLowerCase()))
+  ;[...document.querySelectorAll('img')]
+    // .filter((node) => ['img'].includes(node.tagName.toLowerCase()))
     .forEach((node) => {
       let span = document.createElement('span')
       node.parentNode.insertBefore(span, node)
