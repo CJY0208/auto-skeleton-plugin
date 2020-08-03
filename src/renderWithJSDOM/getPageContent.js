@@ -64,7 +64,13 @@ const getPageContent = (dom, config = DEFAULT_CONFIG, resources) =>
         // 过滤无效 css
         await Promise.all(
           [...document.head.querySelectorAll('style')].map(async (style) => {
-            style.innerHTML = await uncss(dom, style.innerHTML)
+            const nextInnerHTML = await uncss(dom, style.innerHTML)
+            
+            if (nextInnerHTML.length > 0) {
+              style.innerHTML = nextInnerHTML 
+            } else {
+              style.parentNode.removeChild(style)
+            }            
           })
         )
 
