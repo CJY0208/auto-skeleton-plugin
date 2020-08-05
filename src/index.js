@@ -1,4 +1,4 @@
-/* eslint-disable */
+// From: https://github.com/chrisvfritz/prerender-spa-plugin/blob/master/es6/index.js
 // prerender-spa-plugin 官方包依赖 puppeteer，下载成本过高
 // fork 至此处掩盖问题
 
